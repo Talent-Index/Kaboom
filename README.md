@@ -54,7 +54,77 @@ Kaboom solves this by creating a **sneaky, fun pathway into Web3** — using gam
 ---
 
 ## ⚡ Getting Started
-1. Clone the repo:  
+1. Clone the repo:
+
    ```bash
    git clone https://github.com/Talent-Index/Kaboom.git
    cd Kaboom
+   ```
+
+1. Install dependencies and run the project:
+
+   ```bash
+   # Install Node dependencies (use npm, yarn or pnpm depending on your preference)
+   npm install
+   ```
+
+   ```bash
+   # Create environment file
+   cp .env.example .env
+   # Edit .env and set:
+   #  - SUI_RPC_URL (your Sui RPC endpoint)
+   #  - SUI_PRIVATE_KEY (dev key for local testing)
+   #  - DATABASE_URL (if using a DB for matchmaking/leaderboards)
+   #  - Any other values in .env.example
+   ```
+
+   ```bash
+   # Build Move smart contracts (requires Sui toolchain)
+   cd contracts
+   sui move build
+   cd ..
+   ```
+
+   ```bash
+   # Start backend and frontend (adjust paths if your repo uses different folders)
+   # Option A: if services are in root package.json
+   npm run dev
+
+   # Option B: explicit services
+   # cd server && npm run dev   # backend: matchmaking, game logic, APIs
+   # cd web    && npm run dev   # frontend: game UI
+   ```
+
+1. Deploy contracts (optional)
+
+   - For testnet or a local Sui node, use the Sui CLI to publish the built package. See contracts/README.md for deployment scripts and recommended gas budgets.
+
+1. Run tests & linters
+
+   ```bash
+   npm test
+   npm run lint
+   npm run format
+   # For Move unit tests:
+   cd contracts
+   sui move test
+   ```
+
+1. Requirements & notes
+
+   - Node.js 18+ recommended.
+   - Install Sui CLI and a local Sui node or point SUI_RPC_URL to a reachable endpoint.
+   - Keep your private keys secure; do not commit .env or keys to Git.
+
+1. Contributing
+
+   - Read CONTRIBUTING.md for development guidelines, branch naming, and PR process.
+   - Open issues and PRs on the repository; maintainers will review and provide feedback.
+
+1. Helpful commands
+
+   - Clean build: rm -rf node_modules && npm install
+   - Build production frontend: npm run build --prefix web
+   - Start production server: npm start --prefix server
+
+You're ready — enjoy building and playing Kaboom!
