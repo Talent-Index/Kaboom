@@ -128,3 +128,5 @@ Kaboom solves this by creating a **sneaky, fun pathway into Web3** — using gam
    - Start production server: npm start --prefix server
 
 You're ready — enjoy building and playing Kaboom!
+
+*Progressing*
